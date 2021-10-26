@@ -49,7 +49,7 @@ const UserProfile = () => {
                   <FaPlus className={styles.icon} /> Create
                 </button>
               </Link>
-              <button>
+              <button onClick={() => setLoggedInUser({})}>
                 <FaSignOutAlt className={styles.icon} /> Log out
               </button>
             </div>

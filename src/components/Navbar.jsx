@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import firebase from "firebase/compat/app";
 import {
   Collapse,
   Navbar,
@@ -14,13 +13,17 @@ import {
   DropdownItem,
 } from "reactstrap";
 import { BsGithub, BsFacebook, BsPlusLg } from "react-icons/bs";
-import { RiBarChartHorizontalFill, RiUser3Fill } from "react-icons/ri";
+import {
+  RiBarChartHorizontalFill,
+  RiUser3Fill,
+  RiAdminFill,
+} from "react-icons/ri";
 import { AiOutlineLogout } from "react-icons/ai";
 import { IoMdContacts } from "react-icons/io";
 import styles from "../styles/Navbar.module.css";
 import { Link, NavLink as Nlink } from "react-router-dom";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { UserContext } from "./App";
-import { db } from "../Firebase/config.js";
 const MainNavbar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
@@ -41,14 +44,12 @@ const MainNavbar = (props) => {
     accessToken,
   } = loggedInUser;
 
-  // add user info to database
-  // const addUserInfoIntoFirestore = () => {
-  //   // add data to database(firestore)
-  //   db.collection("todos").add({
-  //     loggedInUser,
-  //   });
-  // };
+  // for modal
+  const [modal, setModal] = useState(false);
+  const togglee = () => setModal(!modal);
 
+  let em = process.env.Email_No;
+  console.log("email - ", em);
   return (
     <div className={styles.navbar__wrapper}>
       <Navbar className={styles.nav__background} expand="md">
@@ -101,12 +102,16 @@ const MainNavbar = (props) => {
                     </DropdownToggle>
                     <DropdownMenu right>
                       <DropdownItem className={styles.user__info__flex}>
-                        <RiUser3Fill className={styles.user_icon} />
-                        <Link to={`/profile/${login}`}>Profile</Link>
+                        <Link to={`/profile/${login}`}>
+                          <RiUser3Fill className={styles.user_icon} /> Profile
+                        </Link>
                       </DropdownItem>
                       <DropdownItem divider />
                       <DropdownItem>
-                        <button className={styles.logout__btn}>
+                        <button
+                          onClick={() => setLoggedInUser({})}
+                          className={styles.logout__btn}
+                        >
                           <AiOutlineLogout className={styles.user_icon} /> Log
                           out
                         </button>
@@ -134,10 +139,29 @@ const MainNavbar = (props) => {
               >
                 <BsGithub className={styles.social_icon} />
               </button>
+
+              {email === "personal.shakil.babu@gmail.com" ||
+                email === "torikussadikk@gmail.com" ||
+                (email === "shakilbabu303@gmail.com" && (
+                  <button onClick={togglee}>
+                    <RiAdminFill className={styles.social_icon} />
+                  </button>
+                ))}
             </div>
           </Collapse>
         </div>
       </Navbar>
+      <Modal isOpen={modal} toggle={togglee}>
+        <ModalHeader toggle={togglee}>Admin Login</ModalHeader>
+        <ModalBody>
+          <input type="password" placeholder="Password" />
+        </ModalBody>
+        <ModalFooter>
+          <Button color="primary" onClick={togglee}>
+            Submit
+          </Button>
+        </ModalFooter>
+      </Modal>
     </div>
   );
 };

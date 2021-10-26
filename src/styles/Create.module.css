@@ -31,9 +31,46 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 600px;
+  height: 450px;
+}
+.btn__flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.submit__btn {
+  background-color: var(--primary-color);
+  padding: 12px 30px;
+  margin: 10px 0;
+  color: #fff;
+  cursor: pointer;
+  border: 2px solid var(--primary-color);
+  transition: 0.8s;
 }
 
+.update__btn {
+  opacity: 0;
+}
+
+.submitted {
+  color: green;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+.submit_icon {
+  font-size: 22px;
+  margin-right: 5px;
+}
+.goto_profile {
+  color: green;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: underline;
+}
 /* ======================= responsive ============================= */
 @media screen and (max-width: 768px) {
   .create__flex {
