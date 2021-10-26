@@ -155,7 +155,7 @@
 }
 
 .logout__btn {
-  display: flex;
+  display: flex !important;
   align-items: center;
   background-color: transparent;
   border: none;

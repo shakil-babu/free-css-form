@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import firebase from "firebase/compat/app";
 import {
   Collapse,
   Navbar,
@@ -19,7 +20,7 @@ import { IoMdContacts } from "react-icons/io";
 import styles from "../styles/Navbar.module.css";
 import { Link, NavLink as Nlink } from "react-router-dom";
 import { UserContext } from "./App";
-
+import { db } from "../Firebase/config.js";
 const MainNavbar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
@@ -39,6 +40,14 @@ const MainNavbar = (props) => {
     email,
     accessToken,
   } = loggedInUser;
+
+  // add user info to database
+  // const addUserInfoIntoFirestore = () => {
+  //   // add data to database(firestore)
+  //   db.collection("todos").add({
+  //     loggedInUser,
+  //   });
+  // };
 
   return (
     <div className={styles.navbar__wrapper}>
@@ -93,7 +102,7 @@ const MainNavbar = (props) => {
                     <DropdownMenu right>
                       <DropdownItem className={styles.user__info__flex}>
                         <RiUser3Fill className={styles.user_icon} />
-                        <Link to="/profile/shakil-babu">Profile</Link>
+                        <Link to={`/profile/${login}`}>Profile</Link>
                       </DropdownItem>
                       <DropdownItem divider />
                       <DropdownItem>

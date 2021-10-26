@@ -7,6 +7,7 @@ import Footer from "./Footer.jsx";
 import React, { createContext, useState } from "react";
 import Signin from "./Signin.jsx";
 import PrivateRoute from "./PrivateRoute.jsx";
+import UserProfile from "./UserProfile.jsx";
 
 // userContext
 export const UserContext = createContext();
@@ -19,10 +20,13 @@ const App = () => {
           <MainNavbar />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/create">
+            <PrivateRoute exact path="/create">
               <Create />
-            </Route>
+            </PrivateRoute>
             <Route exact path="/auth/sign-in" component={Signin} />
+            <PrivateRoute exact path="/profile/:id">
+              <UserProfile />
+            </PrivateRoute>
           </Switch>
           <Footer />
         </BrowserRouter>

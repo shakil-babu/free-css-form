@@ -1,0 +1,90 @@
+/* ========================= for user profile components ==================== */
+
+/* ==== user profile area style ======= */
+.user_profile_area {
+  padding: 50px 0;
+}
+
+/* ========= user profile ============ */
+.user_profile {
+  background-color: #fff;
+  padding: 15px;
+  box-shadow: var(--primary-shadow);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.user_profile img {
+  border-radius: 10px;
+  height: 100%;
+}
+
+.user_info {
+  margin-left: 20px;
+}
+.user_info h3 {
+  font-size: 30px;
+}
+
+.user_info h5 {
+  font-size: 20px;
+  color: gray;
+}
+
+.user_info p {
+  color: gray;
+  margin-bottom: 5px;
+}
+
+.icon {
+  font-size: 20px;
+  margin-right: 5px;
+}
+.user_info a {
+  text-decoration: none;
+  color: indigo;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.btn_flex {
+  display: flex;
+  align-items: center;
+}
+
+.btn_flex button {
+  border: none;
+  padding: 10px 30px;
+  margin-top: 10px;
+  cursor: pointer;
+  color: #fff !important;
+  background-color: var(--primary-color);
+}
+.btn_flex button:first-child {
+  margin-top: 18px;
+}
+
+/* =========================== responsive ============================= */
+@media screen and (max-width: 768px) {
+  .user_profile {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .btn_flex {
+    justify-content: center;
+  }
+
+  .user_profile h3 {
+    font-size: 22px;
+    margin-top: 10px;
+  }
+  .user_profile h5 {
+    font-size: 17px;
+  }
+  .btn_flex button {
+    padding: 8px !important;
+  }
+}

@@ -12,7 +12,7 @@ const firebaseConfig = {
 };
 
 // initialize firebase
-firebase.initializeApp(firebaseConfig);
+let firebaseApp = firebase.initializeApp(firebaseConfig);
 
 const githubAuthentication = () => {
   const githubProvider = new firebase.auth.GithubAuthProvider();
@@ -27,3 +27,6 @@ const githubAuthentication = () => {
     });
 };
 export default githubAuthentication;
+
+// firestore database
+export const db = firebaseApp.firestore();
