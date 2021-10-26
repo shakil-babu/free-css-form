@@ -1,0 +1,70 @@
+/* ============================ For intro component =============================== */
+
+/* ============= intro area style =================== */
+.intro__area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1038%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='%230e2a47'%3e%3c/rect%3e%3cpath d='M187.56 346.15 a124.53 124.53 0 1 0 249.06 0 a124.53 124.53 0 1 0 -249.06 0z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M-89.97 100.5 a94.19 94.19 0 1 0 188.38 0 a94.19 94.19 0 1 0 -188.38 0z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M1207.74 182.64 a99.27 99.27 0 1 0 198.54 0 a99.27 99.27 0 1 0 -198.54 0z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M1391.296635466007 158.64230330565138L1381.6705649360506 48.615813678180416 1281.270145838536 168.2683738356078z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M301.3980260826304 69.13206935716187L417.052467361653 153.15993949907048 501.0803375035616 37.50549822004787 385.425896224539-46.52237192186074z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M1393.607%2c341.388C1425.224%2c342.668%2c1458.474%2c333.809%2c1475.207%2c306.952C1492.767%2c278.767%2c1488.539%2c243.352%2c1472.955%2c214.028C1456.213%2c182.524%2c1429.282%2c153.11%2c1393.607%2c153.401C1358.273%2c153.69%2c1331.792%2c183.465%2c1316.472%2c215.306C1303.197%2c242.897%2c1306.718%2c274.662%2c1322.697%2c300.78C1337.932%2c325.683%2c1364.437%2c340.207%2c1393.607%2c341.388' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M972.9476719842089 65.87647904645296L1064.2890726116182 206.52990161835197 1204.9424951835172 115.18850099094263 1113.601094556108-25.46492158095637z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M1065.3 402.67 a147.09 147.09 0 1 0 294.18 0 a147.09 147.09 0 1 0 -294.18 0z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1038'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3cstyle%3e %40keyframes float1 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-10px%2c 0)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float1 %7b animation: float1 5s infinite%3b %7d %40keyframes float2 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-5px%2c -5px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float2 %7b animation: float2 4s infinite%3b %7d %40keyframes float3 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(0%2c -10px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float3 %7b animation: float3 6s infinite%3b %7d %3c/style%3e%3c/defs%3e%3c/svg%3e");
+}
+
+.intro__inner h2 {
+  font-size: var(--heading-font-size);
+  margin-top: 5px;
+  text-transform: uppercase;
+  color: var(--primary-color);
+}
+
+.intro__area p {
+  font-size: 17px;
+  color: var(--primary-color);
+}
+
+/* ============ intro inner style ================ */
+.intro__inner {
+  background-color: var(--default-color);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: var(--primary-shadow);
+  text-align: center;
+  transition: 0.5s;
+}
+
+.icon {
+  font-size: 50px;
+  color: var(--primary-color);
+}
+
+.intro__inner:hover {
+  background-color: var(--primary-color);
+  color: var(--default-color) !important;
+  transition: 0.5s;
+}
+
+.intro__inner:hover .icon {
+  color: var(--default-color);
+}
+.intro__inner:hover h2 {
+  color: var(--default-color);
+}
+
+.intro__inner:hover p {
+  color: var(--default-color);
+}
+
+/* ======================== responsive ========================== */
+@media screen and (max-width: 768px) {
+  .intro__inner h2 {
+    font-size: 25px !important;
+  }
+
+  .intro__area p {
+    font-size: 16px !important;
+  }
+}

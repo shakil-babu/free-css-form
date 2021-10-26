@@ -1,0 +1,42 @@
+/* ======================= for Create component ============================= */
+
+/* ===== create-area ===== */
+.create__area {
+  width: 100%;
+  margin-top: 50px;
+}
+
+/* ===== create-flex ===== */
+.create__flex {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+}
+
+/* ======== editor output style ======= */
+.output__area {
+  width: 100%;
+  background-color: var(--default-color);
+  box-shadow: var(--primary-shadow);
+}
+.output__area h5 {
+  background-color: indigo;
+  padding: 8px;
+  color: #fff;
+}
+
+/* ===== output iframe ====== */
+.output__iframe {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
+}
+
+/* ======================= responsive ============================= */
+@media screen and (max-width: 768px) {
+  .create__flex {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

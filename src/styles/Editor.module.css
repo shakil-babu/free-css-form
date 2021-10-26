@@ -1,0 +1,19 @@
+/* ======================= Editor Component ============================= */
+
+/* ===== code editor area style ===== */
+.code__area {
+  width: 100%;
+  background-color: #263238;
+  margin-bottom: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.code__area h5 {
+  background-color: indigo;
+  color: #fff;
+  padding: 8px;
+}
+
+.code__mirror__wrapper {
+  overflow: hidden;
+}

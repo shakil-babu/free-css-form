@@ -1,0 +1,179 @@
+/*  ==================== navbar ================== */
+
+/* ===== brand name style ====== */
+.brand__title {
+  border-width: 2px;
+  border-style: dashed;
+  border-image: linear-gradient(to right, darkblue, var(--primary-color)) 1;
+  padding: 5px;
+  color: var(--primary-color);
+}
+
+/* ===== nav ====== */
+.nav {
+  background-color: var(--default-color);
+  display: flex;
+  align-items: center;
+}
+
+.navbar__wrapper {
+  border-bottom: 1px solid #0e2a47;
+  padding-bottom: 5px;
+  box-shadow: var(--primary-shadow);
+}
+/* ===== navbar link ====== */
+.navbar__wrapper .link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.5s;
+  z-index: 1;
+  font-size: var(--content-font-size);
+  font-weight: 500;
+  border: none;
+}
+
+/* ===== navbar link  before ====== */
+.navbar__wrapper .link:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background: var(--primary-color);
+  height: 150px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+.navbar__wrapper .link:hover a {
+  color: var(--default-color) !important;
+}
+
+.navbar__wrapper .link:before {
+  top: 100%;
+  left: 100%;
+  transition: all 0.7s;
+}
+
+.navbar__wrapper .link:hover {
+  color: var(--default-color) !important;
+}
+.navbar__wrapper .link:hover:before {
+  top: -30px;
+  left: -30px;
+}
+
+/* ===== navbar wrapper social link ====== */
+.navbar__wrapper a {
+  color: #000 !important;
+  text-decoration: none !important;
+  display: flex;
+  align-items: center;
+}
+
+.follow__btns {
+  display: flex;
+  align-items: center;
+}
+.follow__btns button {
+  padding: 8px 10px;
+  background-color: var(--primary-color) !important;
+  color: var(--default-color);
+  font-size: 17px;
+  font-weight: 500;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.social_icon {
+  font-size: 20px;
+}
+
+.follow__btns button:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.follow__btns button:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.toggler__icon {
+  background-color: #eee !important;
+}
+.collaps__area {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+/* ===== navbar link active style ====== */
+.activeNav {
+  background-color: var(--primary-color);
+  color: var(--default-color) !important;
+}
+
+.activeNav a {
+  color: var(--default-color) !important;
+}
+
+/* ============================== user profile style =========================== */
+.user_profile {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center;
+}
+.user_profile img {
+  height: 42px;
+  width: 42px;
+  border-radius: 100%;
+}
+
+.user_profile p {
+  font-size: 14px;
+  display: flex;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.user_profile:hover {
+  background-color: var(--primary-color);
+}
+
+.user__info__flex {
+  display: flex;
+  align-items: center;
+}
+.user_icon {
+  margin-right: 8px;
+}
+
+.logout__btn {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+}
+.user_icon {
+  font-size: 20px;
+}
+/* ===== responsive ====== */
+@media screen and (max-width: 768px) {
+  .brand__title {
+    font-size: 15px !important;
+    padding: 2px;
+  }
+
+  .nav {
+    flex-direction: column;
+    background-color: transparent;
+    align-items: flex-start;
+    margin-bottom: 8px;
+  }
+}

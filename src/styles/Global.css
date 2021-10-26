@@ -1,0 +1,33 @@
+/* font */
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Open+Sans:wght@300&display=swap");
+/* ======================== BODY STYLES ======================= */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif !important;
+  background-color: #eee !important;
+}
+
+/*  ==================== default variable ==================== */
+:root {
+  --primary-color: #f50057;
+  --primary-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  --default-color: #fff;
+  --content-font-size: 17px;
+  --heading-font-size: 26px;
+}
+
+/* ======================= heading and paragraph default style ========================= */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+/* ======================= default style ================== */

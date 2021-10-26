@@ -1,0 +1,50 @@
+/* =============================== For sign in component ========================= */
+
+/* ============= sign in area ==================  */
+.signin_area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+}
+
+/* =============== sign in button style =================== */
+.signIn_btn {
+  width: 60%;
+  font-size: 18px;
+  text-transform: uppercase;
+  background-color: var(--primary-color);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--default-color);
+  padding: 10px;
+  box-shadow: var(--primary-shadow);
+  border: 2px dotted var(--primary-color);
+  transition: 0.7s;
+}
+
+.icon {
+  font-size: 30px;
+  color: var(--default-color);
+  margin-right: 10px;
+}
+
+.signIn_btn:hover {
+  background-color: var(--default-color);
+  color: var(--primary-color);
+  transition: 0.7s;
+}
+
+.signIn_btn:hover .icon {
+  color: var(--primary-color);
+}
+
+/* ======================== responsive ========================= */
+@media screen and (max-width: 500px) {
+  .signIn_btn {
+    width: 90%;
+    font-size: 17px;
+  }
+}
