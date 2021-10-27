@@ -66,6 +66,66 @@
   margin-top: 18px;
 }
 
+.output__iframe {
+  width: 100%;
+  height: 430px;
+  background-color: #fff;
+}
+
+.waiting__form__area {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: var(--primary-shadow);
+  margin: 20px 0;
+}
+
+.waiting__form__area button {
+  text-transform: uppercase;
+  font-size: 16px;
+  border: 2px solid var(--primary-color);
+  padding: 5px;
+  background-color: #fff;
+  display: flex;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color);
+}
+.icon__watch {
+  margin-right: 5px;
+  font-size: 30px;
+}
+.waiting__single__form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: var(--primary-shadow);
+  margin: 20px 0;
+}
+
+.waiting__single__form h2 button {
+  border: none !important;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.action__btns {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  margin-top: 10px;
+}
+
+.action__btns button {
+  border-radius: 0px !important;
+  border: none !important;
+  padding: 10px 30px;
+  background-color: var(--primary-color);
+  color: #fff;
+  cursor: pointer;
+}
+
 /* =========================== responsive ============================= */
 @media screen and (max-width: 768px) {
   .user_profile {

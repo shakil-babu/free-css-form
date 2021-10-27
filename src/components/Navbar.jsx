@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Collapse,
   Navbar,
@@ -24,6 +24,7 @@ import styles from "../styles/Navbar.module.css";
 import { Link, NavLink as Nlink } from "react-router-dom";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { UserContext } from "./App";
+import { db } from "../Firebase/config";
 const MainNavbar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
@@ -48,8 +49,6 @@ const MainNavbar = (props) => {
   const [modal, setModal] = useState(false);
   const togglee = () => setModal(!modal);
 
-  let em = process.env.Email_No;
-  console.log("email - ", em);
   return (
     <div className={styles.navbar__wrapper}>
       <Navbar className={styles.nav__background} expand="md">
@@ -141,7 +140,7 @@ const MainNavbar = (props) => {
               </button>
 
               {email === "personal.shakil.babu@gmail.com" ||
-                email === "torikussadikk@gmail.com" ||
+                email === "darktoolblue@gmail.com" ||
                 (email === "shakilbabu303@gmail.com" && (
                   <button onClick={togglee}>
                     <RiAdminFill className={styles.social_icon} />
@@ -154,13 +153,8 @@ const MainNavbar = (props) => {
       <Modal isOpen={modal} toggle={togglee}>
         <ModalHeader toggle={togglee}>Admin Login</ModalHeader>
         <ModalBody>
-          <input type="password" placeholder="Password" />
+          <p>lorem1000</p>
         </ModalBody>
-        <ModalFooter>
-          <Button color="primary" onClick={togglee}>
-            Submit
-          </Button>
-        </ModalFooter>
       </Modal>
     </div>
   );
