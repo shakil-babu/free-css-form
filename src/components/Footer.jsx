@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/Footer.module.css";
 
+// Component started here
 const Footer = () => {
   // for current year
   const [date, setDate] = useState();
   const getYear = () => setDate(new Date().getFullYear());
+
+  // useEffect for calling getYear function
   useEffect(() => {
     getYear();
   }, []);
   return (
     <>
+      {/* ====================== Footer area ========================= */}
       <div className={styles.footer_dark}>
         <footer>
           <div className="container">

@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import styles from "../styles/UserProfile.module.css";
-import { UserContext } from "./App";
+import { UserContext, WaitingFormsContext } from "./App";
 import { Link } from "react-router-dom";
 import {
   FaLocationArrow,
@@ -13,7 +13,10 @@ import { db } from "../Firebase/config";
 import WaitingForm from "./WaitingForm";
 import AcceptedForms from "./AcceptedForms";
 const UserProfile = () => {
+  // logged in user context
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+  // waitingFormsContext
+  const [waitingAllForms, setWaitingAllForms] = useContext(WaitingFormsContext);
   // destructuring user info
   const {
     avatar_url,
@@ -45,17 +48,16 @@ const UserProfile = () => {
       });
   };
 
-  useEffect(() => {
-    getData();
-  }, []);
-
   // filtered data for logged in user
   let filteredData = waitingForms.filter(
     (item, index) => item.loggedInUser.email === email
   );
-
   // for pending and accepted bar
   const [pending, setPending] = useState(true);
+  useEffect(() => {
+    getData();
+  }, []);
+  setWaitingAllForms(waitingForms);
   return (
     <>
       <section className={`container ${styles.user_profile_area}`}>

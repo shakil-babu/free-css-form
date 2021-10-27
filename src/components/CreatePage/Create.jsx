@@ -1,3 +1,4 @@
+// import important files/components
 import React, { useContext, useState } from "react";
 import styles from "../../styles/Create.module.css";
 import Editor from "./Editor";
@@ -6,7 +7,10 @@ import { db } from "../../Firebase/config";
 import { UserContext } from "../App";
 import { FaCheck } from "react-icons/fa";
 import { Link } from "react-router-dom";
+
+// Component start from here
 const Create = () => {
+  // html,css state with default value
   const [html, setHtml] = useState(`<form action="">
 Create here like your own.
 </form>`);
@@ -14,10 +18,12 @@ Create here like your own.
 
 }
   `);
-  // user info
+
+  // user information from logged in user (from context api)
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const [submit, setSubmit] = useState(false);
-  // src doc
+
+  // default src doc which will contain html and css
   const srcDoc = `
     <html>
         <body>${html}</body>
@@ -25,7 +31,7 @@ Create here like your own.
     </html>
     `;
 
-  // add waiting form to database
+  // add content to database
   const addWaitingFormToDatafase = () => {
     db.collection("waiting-forms").add({
       html: html,
@@ -39,6 +45,7 @@ Create here like your own.
 
   return (
     <>
+      {/* ==================== editor showcase area =================== */}
       <section className={`${styles.create__area} container`}>
         <div className={styles.create__flex}>
           <Editor
@@ -55,6 +62,7 @@ Create here like your own.
           />
         </div>
 
+        {/* ================== Output area ========================== */}
         <div className={styles.output__area}>
           <h5>OUTPUT</h5>
           <iframe
@@ -68,9 +76,9 @@ Create here like your own.
           ></iframe>
         </div>
 
+        {/* ====================== Actions buttons =========================== */}
         <div className={styles.btn__flex}>
           <button className={styles.update__btn}>Update</button>
-
           {submit ? (
             <div>
               <p className={styles.submitted}>

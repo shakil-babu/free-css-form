@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   Collapse,
   Navbar,
@@ -22,9 +22,8 @@ import { AiOutlineLogout } from "react-icons/ai";
 import { IoMdContacts } from "react-icons/io";
 import styles from "../styles/Navbar.module.css";
 import { Link, NavLink as Nlink } from "react-router-dom";
-import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
+import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import { UserContext } from "./App";
-import { db } from "../Firebase/config";
 const MainNavbar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
