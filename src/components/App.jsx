@@ -9,7 +9,7 @@ import Signin from "./Signin.jsx";
 import PrivateRoute from "./PrivateRoute.jsx";
 import UserProfile from "./UserProfile.jsx";
 import UpdateWaitingForm from "./UpdateWaitingForm.jsx";
-
+import NotFound from "../components/NotFound.jsx";
 // userContext
 export const UserContext = createContext();
 const App = () => {
@@ -31,6 +31,7 @@ const App = () => {
             <PrivateRoute exact path="/details/:userid/update/:formid">
               <UpdateWaitingForm />
             </PrivateRoute>
+            <Route path="*" component={NotFound} />
           </Switch>
           <Footer />
         </BrowserRouter>

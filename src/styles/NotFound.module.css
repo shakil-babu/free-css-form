@@ -1,0 +1,45 @@
+.notFound__area {
+  padding: 50px 0;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.notFound__area div {
+  background-color: #fff;
+  padding: 15px;
+  box-shadow: var(--primary-shadow);
+  border-radius: 10px;
+  text-align: center;
+  padding-bottom: 25px;
+}
+
+.notFound__area h1 {
+  font-size: 30px;
+}
+.notFound__area h1 span {
+  color: var(--primary-color);
+  font-size: 40px;
+  margin: 0 5px;
+}
+
+.notFound__area p {
+  color: gray;
+  font-size: 14px;
+}
+
+.notFound__area a {
+  text-decoration: none;
+  background-color: var(--primary-color);
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  transition: 0.8s;
+  padding: 5px 30px;
+  border: 2px dashed var(--primary-color);
+}
+.notFound__area a:hover {
+  color: var(--primary-color);
+  background-color: transparent;
+  transition: 0.8s;
+}

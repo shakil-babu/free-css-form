@@ -1,12 +1,6 @@
 import React from "react";
-
-const Output = () => {
-  let srcDoc = `
-    <html>
-        <body>${item.html}</body>
-        <style>${item.css}</style>
-    </html>
-              `;
+import styles from "../../styles/Create.module.css";
+const Output = ({ srcDoc }) => {
   return (
     <>
       <div className={styles.output__area}>
