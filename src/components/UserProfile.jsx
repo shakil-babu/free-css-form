@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import styles from "../styles/UserProfile.module.css";
 import { UserContext } from "./App";
 import { Link } from "react-router-dom";
@@ -9,9 +9,9 @@ import {
   FaPlus,
   FaSignOutAlt,
 } from "react-icons/fa";
-import { BsStopwatch } from "react-icons/bs";
-import { useState } from "react/cjs/react.development";
 import { db } from "../Firebase/config";
+import WaitingForm from "./WaitingForm";
+import AcceptedForms from "./AcceptedForms";
 const UserProfile = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   // destructuring user info
@@ -27,33 +27,35 @@ const UserProfile = () => {
     accessToken,
   } = loggedInUser;
 
-  // user pending design
+  // get waiting forms data filtered by user
   const [waitingForms, setWaitingForms] = useState([]);
   const getData = () => {
-    db.collection("waiting-forms").onSnapshot((snapshot) => {
-      setWaitingForms(
-        snapshot.docs.map((doc) => ({
-          id: doc.id,
-          avatar_url: doc.data().avatar_url,
-          loggedInUser: doc.data().loggedInUser,
-          html: doc.data().html,
-          css: doc.data().css,
-        }))
-      );
-    });
+    db.collection("waiting-forms")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) => {
+        setWaitingForms(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            avatar_url: doc.data().avatar_url,
+            loggedInUser: doc.data().loggedInUser,
+            html: doc.data().html,
+            css: doc.data().css,
+          }))
+        );
+      });
   };
 
   useEffect(() => {
     getData();
   }, []);
 
-  // for logged in user
+  // filtered data for logged in user
   let filteredData = waitingForms.filter(
     (item, index) => item.loggedInUser.email === email
   );
 
-  const [html, setHtml] = useState("");
-  const [css, setCss] = useState("");
+  // for pending and accepted bar
+  const [pending, setPending] = useState(true);
   return (
     <>
       <section className={`container ${styles.user_profile_area}`}>
@@ -87,42 +89,38 @@ const UserProfile = () => {
           </div>
         </div>
 
-        {/* ================== user waiting work ============================= */}
-        <div className={styles.waiting__form__area}>
-          <button>
-            <BsStopwatch className={styles.icon__watch} /> Your form -{" "}
-            <span>Waiting for accepted.</span>
+        {/* waiting and accepted bar */}
+        <div className={styles.waiting__accepted__btns}>
+          <button
+            onClick={() => setPending(true)}
+            className={pending && styles.pending__true}
+          >
+            Pending
           </button>
-          {filteredData.map((item, index) => {
-            let srcDoc = `
-          <html>
-              <body>${item.html}</body>
-              <style>${item.css}</style>
-          </html>
-      `;
-            return (
-              <div className={styles.waiting__single__form}>
-                <h2>
-                  <button>{index + 1}</button>
-                </h2>
-                <iframe
-                  className={styles.output__iframe}
-                  srcDoc={srcDoc}
-                  frameborder="0"
-                  width="100%"
-                  height="100%"
-                  title="Output"
-                  sandbox="allow-scripts"
-                ></iframe>
-
-                <div className={styles.action__btns}>
-                  <button>Update</button>
-                  <button>Delete</button>
-                </div>
-              </div>
-            );
-          })}
+          <button
+            onClick={() => setPending(false)}
+            className={!pending && styles.pending__true}
+          >
+            Accepted
+          </button>
         </div>
+        {/* ================== user waiting work ============================= */}
+        {pending ? (
+          <div>
+            {filteredData.length > 0 ? (
+              <WaitingForm
+                loggedInUser={loggedInUser}
+                filteredData={filteredData}
+              />
+            ) : (
+              <div className={styles.no__pending__forms}>
+                <h4>You've no pending forms ever!</h4>
+              </div>
+            )}
+          </div>
+        ) : (
+          <AcceptedForms />
+        )}
       </section>
     </>
   );

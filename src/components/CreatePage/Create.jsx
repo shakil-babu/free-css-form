@@ -7,8 +7,13 @@ import { UserContext } from "../App";
 import { FaCheck } from "react-icons/fa";
 import { Link } from "react-router-dom";
 const Create = () => {
-  const [html, setHtml] = useState("");
-  const [css, setCss] = useState("");
+  const [html, setHtml] = useState(`<form action="">
+Create here like your own.
+</form>`);
+  const [css, setCss] = useState(`form{
+
+}
+  `);
   // user info
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const [submit, setSubmit] = useState(false);
@@ -26,6 +31,7 @@ const Create = () => {
       html: html,
       css: css,
       loggedInUser,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     });
 
     setSubmit(true);

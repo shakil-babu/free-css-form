@@ -8,6 +8,7 @@ import React, { createContext, useState } from "react";
 import Signin from "./Signin.jsx";
 import PrivateRoute from "./PrivateRoute.jsx";
 import UserProfile from "./UserProfile.jsx";
+import UpdateWaitingForm from "./UpdateWaitingForm.jsx";
 
 // userContext
 export const UserContext = createContext();
@@ -26,6 +27,9 @@ const App = () => {
             <Route exact path="/auth/sign-in" component={Signin} />
             <PrivateRoute exact path="/profile/:id">
               <UserProfile />
+            </PrivateRoute>
+            <PrivateRoute exact path="/details/:userid/update/:formid">
+              <UpdateWaitingForm />
             </PrivateRoute>
           </Switch>
           <Footer />

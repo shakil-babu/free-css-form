@@ -22,7 +22,7 @@ import { AiOutlineLogout } from "react-icons/ai";
 import { IoMdContacts } from "react-icons/io";
 import styles from "../styles/Navbar.module.css";
 import { Link, NavLink as Nlink } from "react-router-dom";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
 import { UserContext } from "./App";
 import { db } from "../Firebase/config";
 const MainNavbar = (props) => {

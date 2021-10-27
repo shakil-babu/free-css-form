@@ -125,7 +125,50 @@
   color: #fff;
   cursor: pointer;
 }
+.action__btns button:first-child {
+  background-color: green !important;
+}
 
+/* =================== Pending and Accepted Area ============================ */
+.waiting__accepted__btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--primary-shadow);
+  width: 300px;
+  margin: auto;
+  margin-top: 20px;
+  background-color: #fff;
+  padding: 10px;
+}
+
+.waiting__accepted__btns button {
+  padding: 10px 30px;
+  background-color: var(--primary-color);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+  border: 2px dashed var(--primary-color);
+}
+
+.pending__true {
+  background-color: transparent !important;
+  color: var(--primary-color) !important;
+}
+
+/* =============== no pending forms ================ */
+.no__pending__forms {
+  background-color: #fff;
+  color: var(--primary-color);
+  padding: 10px;
+  box-shadow: var(--primary-shadow);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
 /* =========================== responsive ============================= */
 @media screen and (max-width: 768px) {
   .user_profile {
