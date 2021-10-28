@@ -1,0 +1,91 @@
+.secure___andmin__area {
+  margin-top: 40px;
+  background-color: #fff;
+  box-shadow: var(--primary-shadow);
+}
+
+.bar__area {
+  border-bottom: 1px dashed var(--primary-color);
+  background-color: var(--primary-color);
+  padding: 20px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.bar__area h1 {
+  color: #fff;
+  font-size: 25px;
+}
+
+.secure__user__grid {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+.single__user {
+  background-color: #fff;
+  box-shadow: var(--primary-shadow);
+  display: flex;
+  align-items: center;
+}
+
+.single__user img {
+  width: 50%;
+  height: 150px;
+  margin-right: 8px;
+}
+
+.single__user__content {
+  padding: 0;
+  margin: 0;
+}
+.single__user__content p {
+  font-size: 13px;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.single__user__content a {
+  text-decoration: none;
+  font-size: 13px;
+  color: indigo;
+}
+
+.view__btn button {
+  background-color: var(--primary-color);
+  color: #fff !important;
+  padding: 5px 35px;
+  margin-top: 10px !important;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+}
+
+/* =============================== NO Request here div styles =============================== */
+.no__requ {
+  text-align: center;
+  padding: 40px 0;
+}
+.no__requ h3 {
+  text-transform: uppercase;
+  font-size: 32px;
+  color: var(--primary-color);
+}
+
+/* =========================== responsive ============================= */
+@media screen and (max-width: 992px) {
+  .secure__user__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .secure__user__grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .single__user__content {
+    padding-right: 5px;
+  }
+  .single__user__content p {
+    font-size: 10px;
+  }
+}

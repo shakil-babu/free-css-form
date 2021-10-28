@@ -71,6 +71,52 @@
   cursor: pointer;
   text-decoration: underline;
 }
+
+/* ======================= action__btn__flex__here================= */
+.action__btn__flex__here {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  justify-content: end;
+}
+.action__btn__flex__here button {
+  background-color: var(--primary-color);
+  border: none;
+  color: #fff;
+  padding: 8px 20px;
+  transition: 0.7s;
+}
+.action__btn__flex__here button:hover:first-child {
+  background-color: yellowgreen;
+  transition: 0.7s;
+}
+.action__btn__flex__here button:hover:nth-child(2) {
+  background-color: indigo;
+  transition: 0.7s;
+}
+.action__btn__flex__here button:hover:last-child {
+  background-color: orangered;
+  transition: 0.7s;
+}
+
+/* -------------------- show message --------------------------- */
+.show__message {
+  text-align-last: right;
+  margin-top: 12px;
+}
+.show__message button {
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  padding: 6px 20px;
+  background-color: rgba(0, 128, 0, 0.733);
+  color: #fff;
+}
+
+.confirmed__btn {
+  background-color: gray !important;
+  cursor: none !important;
+}
 /* ======================= responsive ============================= */
 @media screen and (max-width: 768px) {
   .create__flex {

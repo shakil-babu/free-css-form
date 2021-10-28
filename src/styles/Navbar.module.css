@@ -163,6 +163,13 @@
 .user_icon {
   font-size: 20px;
 }
+
+/* ======================== custom modal style ========================== */
+.custom__modal__style {
+  width: 897px !important;
+  height: 802px !important;
+}
+
 /* ===== responsive ====== */
 @media screen and (max-width: 768px) {
   .brand__title {

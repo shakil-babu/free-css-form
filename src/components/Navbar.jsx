@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import {
   Collapse,
   Navbar,
@@ -22,15 +22,13 @@ import { AiOutlineLogout } from "react-icons/ai";
 import { IoMdContacts } from "react-icons/io";
 import styles from "../styles/Navbar.module.css";
 import { Link, NavLink as Nlink } from "react-router-dom";
-import { Modal, ModalHeader, ModalBody } from "reactstrap";
-import { UserContext } from "./App";
+import { RandomWordContext, UserContext } from "./App";
 const MainNavbar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
   // data from user context
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-
   // destructuring user info
   const {
     avatar_url,
@@ -44,10 +42,30 @@ const MainNavbar = (props) => {
     accessToken,
   } = loggedInUser;
 
-  // for modal
-  const [modal, setModal] = useState(false);
-  const togglee = () => setModal(!modal);
+  // random word context
+  const [rw, setRw] = useContext(RandomWordContext);
+  // random alphavet
+  const randomWord = () => {
+    var text = "";
+    var possible =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for (var i = 0; i < 8; i++) {
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
 
+    return text;
+  };
+
+  useEffect(() => {
+    let rww = randomWord();
+    setRw(rww);
+  }, []);
+
+  // sign out
+  const signOut = () => {
+    setLoggedInUser({});
+    // localStorage.removeItem("user");
+  };
   return (
     <div className={styles.navbar__wrapper}>
       <Navbar className={styles.nav__background} expand="md">
@@ -107,7 +125,7 @@ const MainNavbar = (props) => {
                       <DropdownItem divider />
                       <DropdownItem>
                         <button
-                          onClick={() => setLoggedInUser({})}
+                          onClick={signOut}
                           className={styles.logout__btn}
                         >
                           <AiOutlineLogout className={styles.user_icon} /> Log
@@ -141,20 +159,19 @@ const MainNavbar = (props) => {
               {email === "personal.shakil.babu@gmail.com" ||
                 email === "darktoolblue@gmail.com" ||
                 (email === "shakilbabu303@gmail.com" && (
-                  <button onClick={togglee}>
-                    <RiAdminFill className={styles.social_icon} />
-                  </button>
+                  <Link
+                    style={{ textDecoration: "none", background: "#f50057" }}
+                    to={`/secure/${rw}/admin`}
+                  >
+                    <button>
+                      <RiAdminFill className={styles.social_icon} />
+                    </button>
+                  </Link>
                 ))}
             </div>
           </Collapse>
         </div>
       </Navbar>
-      <Modal isOpen={modal} toggle={togglee}>
-        <ModalHeader toggle={togglee}>Admin Login</ModalHeader>
-        <ModalBody>
-          <p>lorem1000</p>
-        </ModalBody>
-      </Modal>
     </div>
   );
 };

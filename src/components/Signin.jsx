@@ -19,26 +19,8 @@ const Signin = () => {
   // sign in handler
   const clickHandler = async () => {
     const res = await githubAuthentication();
-    // user info
-    let user = res.additionalUserInfo.profile;
-    let { avatar_url, bio, blog, location, login, name, html_url } = user;
-
-    // for email
-    let { email, accessToken } = res.user.multiFactor.user;
-
-    // final information
-    let finalInfo = {
-      avatar_url,
-      bio,
-      blog,
-      location,
-      login,
-      name,
-      html_url,
-      email,
-      accessToken,
-    };
-    setLoggedInUser(finalInfo);
+    // let final = JSON.parse(localStorage.getItem("user"));
+    setLoggedInUser(res);
     history.replace(from);
   };
 

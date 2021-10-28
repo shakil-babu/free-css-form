@@ -1,7 +1,6 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
-
 const firebaseConfig = {
   apiKey: "AIzaSyBXBPfWmpTwAxUKgrZnB6u3dvOmVSkXlNw",
   authDomain: "free-css-form.firebaseapp.com",
@@ -20,12 +19,36 @@ const githubAuthentication = () => {
     .auth()
     .signInWithPopup(githubProvider)
     .then((res) => {
-      return res;
+      // user info
+      let user = res.additionalUserInfo.profile;
+      let { avatar_url, bio, blog, location, login, name, html_url } = user;
+
+      // for email
+      let { email, accessToken } = res.user.multiFactor.user;
+
+      // final information
+      let finalInfo = {
+        avatar_url,
+        bio,
+        blog,
+        location,
+        login,
+        name,
+        html_url,
+        email,
+        accessToken,
+      };
+
+      // let ans = res
+      //   ? localStorage.setItem("user", JSON.stringify(finalInfo))
+      //   : localStorage.removeItem("user");
+      return finalInfo;
     })
     .catch((err) => {
       return err;
     });
 };
+
 export default githubAuthentication;
 
 // firestore database

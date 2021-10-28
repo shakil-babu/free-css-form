@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import styles from "../styles/UserProfile.module.css";
 import { UserContext, WaitingFormsContext } from "./App";
 import { Link } from "react-router-dom";
@@ -9,13 +9,11 @@ import {
   FaPlus,
   FaSignOutAlt,
 } from "react-icons/fa";
-import { db } from "../Firebase/config";
 import WaitingForm from "./WaitingForm";
 import AcceptedForms from "./AcceptedForms";
 const UserProfile = () => {
   // logged in user context
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-  // waitingFormsContext
   const [waitingAllForms, setWaitingAllForms] = useContext(WaitingFormsContext);
   // destructuring user info
   const {
@@ -30,34 +28,18 @@ const UserProfile = () => {
     accessToken,
   } = loggedInUser;
 
-  // get waiting forms data filtered by user
-  const [waitingForms, setWaitingForms] = useState([]);
-  const getData = () => {
-    db.collection("waiting-forms")
-      .orderBy("timestamp", "desc")
-      .onSnapshot((snapshot) => {
-        setWaitingForms(
-          snapshot.docs.map((doc) => ({
-            id: doc.id,
-            avatar_url: doc.data().avatar_url,
-            loggedInUser: doc.data().loggedInUser,
-            html: doc.data().html,
-            css: doc.data().css,
-          }))
-        );
-      });
-  };
-
   // filtered data for logged in user
-  let filteredData = waitingForms.filter(
+  let filteredData = waitingAllForms.filter(
     (item, index) => item.loggedInUser.email === email
   );
   // for pending and accepted bar
   const [pending, setPending] = useState(true);
-  useEffect(() => {
-    getData();
-  }, []);
-  setWaitingAllForms(waitingForms);
+
+  // sign out
+  const signOut = () => {
+    setLoggedInUser({});
+    // localStorage.removeItem("user");
+  };
   return (
     <>
       <section className={`container ${styles.user_profile_area}`}>
@@ -84,7 +66,7 @@ const UserProfile = () => {
                   <FaPlus className={styles.icon} /> Create
                 </button>
               </Link>
-              <button onClick={() => setLoggedInUser({})}>
+              <button onClick={signOut}>
                 <FaSignOutAlt className={styles.icon} /> Log out
               </button>
             </div>
