@@ -10,6 +10,7 @@
   border: 2px dashed var(--primary-color) !important;
   font-size: 30px;
   color: var(--primary-color);
+  border-radius: 10px;
 }
 
 .single__fomrs {

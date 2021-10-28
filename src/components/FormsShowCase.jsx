@@ -5,8 +5,7 @@ import { AcceptedFormsContext } from "./App";
 import { Link } from "react-router-dom";
 const FormsShowCase = () => {
   // accepted forms context
-  const [acceptedAllForms, setAcceptedAllForms] =
-    useContext(AcceptedFormsContext);
+  const [acceptedAllForms, setAcceptedAllForms] = useContext(AcceptedFormsContext);
 
   return (
     <>
