@@ -9,6 +9,7 @@ import Signin from "./Signin.jsx";
 import PrivateRoute from "./PrivateRoute.jsx";
 import UserProfile from "./UserProfile.jsx";
 import UpdateWaitingForm from "./UpdateWaitingForm.jsx";
+import UpdateAcceptedForms from './UpdateAcceptedForms';
 import NotFound from "../components/NotFound.jsx";
 import SecureAdmin from "./SecureAdmin.jsx";
 import ConfirmForms from "./ConfirmForms.jsx";
@@ -20,6 +21,9 @@ export const UserContext = createContext();
 // waiting forms context - for pending forms
 export const WaitingFormsContext = createContext();
 
+// accepted forms context - for accepted forms
+export const AcceptedFormsContext = createContext();
+
 // random word context
 export const RandomWordContext = createContext();
 
@@ -28,6 +32,9 @@ const App = () => {
   const [loggedInUser, setLoggedInUser] = useState({});
   // state for waiting forms user
   const [waitingAllForms, setWaitingAllForms] = useState([]);
+
+  // state for accepted forms
+  const [acceptedAllForms, setAcceptedAllForms] = useState([]);
 
   // state for random word
   const [rw, setRw] = useState("");
@@ -49,12 +56,30 @@ const App = () => {
       });
   };
 
+  // get acceptedforms data
+  const getAcceptedData = () => {
+    db.collection("accepted-forms")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) => {
+        setAcceptedAllForms(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            avatar_url: doc.data().avatar_url,
+            loggedInUser: doc.data().loggedInUser,
+            html: doc.data().html,
+            css: doc.data().css,
+          }))
+        );
+      });
+  };
   // useEffect for function calling
   useEffect(() => {
     getData();
+    getAcceptedData();
   }, []);
   return (
     <div>
+      <AcceptedFormsContext.Provider  value={[acceptedAllForms, setAcceptedAllForms]}>
       <RandomWordContext.Provider value={[rw, setRw]}>
         <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
           <WaitingFormsContext.Provider
@@ -74,6 +99,10 @@ const App = () => {
                 <PrivateRoute exact path="/details/:userid/update/:formid">
                   <UpdateWaitingForm />
                 </PrivateRoute>
+                <PrivateRoute exact path="/details/:userid/updates/:formid">
+                    <UpdateAcceptedForms/>
+                  </PrivateRoute>
+                  
                 <PrivateRoute exact path={`/secure/${rw}/admin`}>
                   <SecureAdmin />
                 </PrivateRoute>
@@ -87,6 +116,7 @@ const App = () => {
           </WaitingFormsContext.Provider>
         </UserContext.Provider>
       </RandomWordContext.Provider>
+      </AcceptedFormsContext.Provider>
     </div>
   );
 };

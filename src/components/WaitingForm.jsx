@@ -1,20 +1,31 @@
 import React from "react";
 import styles from "../styles/UserProfile.module.css";
 import { BsStopwatch } from "react-icons/bs";
+import { MdOutlinePublic } from "react-icons/md";
 import { db } from "../Firebase/config";
 import { Link } from "react-router-dom";
 
-const WaitingForm = ({ filteredData, loggedInUser }) => {
+const WaitingForm = ({ filteredData, loggedInUser, forms, bool }) => {
   // delete single waiting form from database
   const deleteTodo = (item) => {
-    db.collection("waiting-forms").doc(item).delete();
+    db.collection(forms).doc(item).delete();
   };
+
   return (
     <>
       <div className={styles.waiting__form__area}>
         <button>
-          <BsStopwatch className={styles.icon__watch} />
-          <span>Waiting for accepted.</span>
+          {bool ? (
+            <>
+              <BsStopwatch className={styles.icon__watch} />
+              <span>Waiting for accepted.</span>
+            </>
+          ) : (
+            <>
+              <MdOutlinePublic className={styles.icon__watch} />
+              <span>Your forms - (Public).</span>
+            </>
+          )}
         </button>
         {filteredData.map((item, index) => {
           let srcDoc = `
@@ -41,7 +52,11 @@ const WaitingForm = ({ filteredData, loggedInUser }) => {
               <div className={styles.action__btns}>
                 <Link
                   style={{ textDecoration: "none" }}
-                  to={`/details/${loggedInUser.login}/update/${item.id}`}
+                  to={
+                    bool
+                      ? `/details/${loggedInUser.login}/update/${item.id}`
+                      : `/details/${loggedInUser.login}/updates/${item.id}`
+                  }
                 >
                   <button>Edit</button>
                 </Link>

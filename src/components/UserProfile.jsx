@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import styles from "../styles/UserProfile.module.css";
-import { UserContext, WaitingFormsContext } from "./App";
+import { AcceptedFormsContext, UserContext, WaitingFormsContext } from "./App";
 import { Link } from "react-router-dom";
 import {
   FaLocationArrow,
@@ -10,11 +10,13 @@ import {
   FaSignOutAlt,
 } from "react-icons/fa";
 import WaitingForm from "./WaitingForm";
-import AcceptedForms from "./AcceptedForms";
 const UserProfile = () => {
+  let [acceptedAllForms, setAcceptedAllForms] =
+    useContext(AcceptedFormsContext);
   // logged in user context
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const [waitingAllForms, setWaitingAllForms] = useContext(WaitingFormsContext);
+
   // destructuring user info
   const {
     avatar_url,
@@ -30,6 +32,11 @@ const UserProfile = () => {
 
   // filtered data for logged in user
   let filteredData = waitingAllForms.filter(
+    (item, index) => item.loggedInUser.email === email
+  );
+
+  // filtered accepted forms data for logged in use
+  let filteredAcceptedData = acceptedAllForms.filter(
     (item, index) => item.loggedInUser.email === email
   );
   // for pending and accepted bar
@@ -95,6 +102,8 @@ const UserProfile = () => {
               <WaitingForm
                 loggedInUser={loggedInUser}
                 filteredData={filteredData}
+                forms="waiting-forms"
+                bool={true}
               />
             ) : (
               <div className={styles.no__pending__forms}>
@@ -103,7 +112,20 @@ const UserProfile = () => {
             )}
           </div>
         ) : (
-          <AcceptedForms />
+          <>
+            {filteredAcceptedData.length > 0 ? (
+              <WaitingForm
+                loggedInUser={loggedInUser}
+                filteredData={filteredAcceptedData}
+                forms="accepted-forms"
+                bool={false}
+              />
+            ) : (
+              <div className={styles.no__pending__forms}>
+                <h4>You've no Accepted forms ever!</h4>
+              </div>
+            )}
+          </>
         )}
       </section>
     </>

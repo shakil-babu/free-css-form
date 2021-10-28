@@ -1,6 +1,6 @@
 import React from "react";
 
-const AcceptedForms = () => {
+const AcceptedForms = ({ filteredData, loggedInUser }) => {
   return (
     <>
       <h1>Accepted Forms</h1>
