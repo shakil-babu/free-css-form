@@ -10,3 +10,10 @@
 .loader img {
   width: 200px;
 }
+
+/* =========== responsive =============== */
+@media screen and (max-width: 768px) {
+  .loader img {
+    width: 120px;
+  }
+}
