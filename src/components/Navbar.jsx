@@ -157,17 +157,19 @@ const MainNavbar = (props) => {
               </button>
 
               {email === "personal.shakil.babu@gmail.com" ||
-                email === "darktoolblue@gmail.com" ||
-                (email === "shakilbabu303@gmail.com" && (
-                  <Link
-                    style={{ textDecoration: "none", background: "#f50057" }}
-                    to={`/secure/${rw}/admin`}
-                  >
-                    <button>
-                      <RiAdminFill className={styles.social_icon} />
-                    </button>
-                  </Link>
-                ))}
+              email === "darktoolblue@gmail.com" ||
+              email === "shakilbabu303@gmail.com" ? (
+                <Link
+                  style={{ textDecoration: "none", background: "#f50057" }}
+                  to={`/secure/${rw}/admin`}
+                >
+                  <button>
+                    <RiAdminFill className={styles.social_icon} />
+                  </button>
+                </Link>
+              ) : (
+                ""
+              )}
             </div>
           </Collapse>
         </div>
