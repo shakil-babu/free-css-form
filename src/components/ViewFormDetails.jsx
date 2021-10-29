@@ -71,7 +71,7 @@ const ViewFormDetails = () => {
                 <div className={design.creator__info}>
                   <h5>@{finded.loggedInUser.login}</h5>
                   <p>{finded.loggedInUser.bio}</p>
-                  <a href={finded.loggedInUser.login} target="_blank">
+                  <a href={finded.loggedInUser.html_url} target="_blank">
                     <FaGithub /> {finded.loggedInUser.login}
                   </a>
                   <br />
