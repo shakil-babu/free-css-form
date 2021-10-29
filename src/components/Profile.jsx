@@ -74,7 +74,10 @@ const Profile = () => {
               </html>
           `;
                 return (
-                  <div className={styles.user__form__div}>
+                  <div
+                    style={{ marginTop: "15px" }}
+                    className={styles.user__form__div}
+                  >
                     <div className={styles.go__back__btn}>
                       <Link
                         style={{ marginBottom: "20px" }}

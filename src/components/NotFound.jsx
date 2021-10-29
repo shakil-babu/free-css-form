@@ -13,8 +13,6 @@ const NotFound = () => {
           <h1>
             4<span>0</span>4
           </h1>
-          <p>.The page you're looking for is not found or never existed.</p>
-
           {/* =============== link for back to home ================= */}
           <Link to="/">Back to home</Link>
         </div>
