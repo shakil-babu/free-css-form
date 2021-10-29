@@ -5,7 +5,7 @@ import styles from "../styles/Create.module.css";
 import Editor from "./CreatePage/Editor";
 import design from "../styles/ViewFormDetails.module.css";
 import { FaGithub, FaRegUserCircle, FaPlus } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 const ViewFormDetails = () => {
   let { formid } = useParams();
   let [acceptedAllForms, setAcceptedAllForms] =
@@ -25,6 +25,9 @@ const ViewFormDetails = () => {
         <style>${css}</style>
     </html>
     `;
+
+  // history
+  let history = useHistory();
   return (
     <>
       <section className={`${design.create__area} container`}>
@@ -95,6 +98,11 @@ const ViewFormDetails = () => {
               </Link>
             </div>
           </div>
+        </div>
+
+        {/* ===================== go back button ================== */}
+        <div className={design.go__back__btn} style={{ marginTop: "20px" }}>
+          <button onClick={() => history.goBack()}>Go back</button>
         </div>
       </section>
     </>

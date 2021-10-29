@@ -68,6 +68,18 @@
   font-size: 15px;
 }
 
+.go__back__btn {
+  display: flex;
+  justify-content: end;
+}
+.go__back__btn button {
+  background-color: var(--primary-color);
+  border: none;
+  color: #fff;
+  padding: 5px 30px;
+  cursor: pointer;
+}
+
 /* ====================================== responsive ================================= */
 @media screen and (max-width: 992px) {
   .flex {

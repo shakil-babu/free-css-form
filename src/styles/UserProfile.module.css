@@ -129,6 +129,49 @@
   background-color: green !important;
 }
 
+.user__form__area__here {
+  padding: 20px 0;
+  margin-bottom: 10px;
+}
+.user__form__area__here h4 {
+  font-size: 16px;
+  width: 300px;
+  border: 2px dashed var(--primary-color);
+  text-align: center;
+  padding: 8px;
+  background-color: #fff;
+  box-shadow: var(--primary-shadow);
+}
+.user__form__div {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: var(--primary-shadow);
+}
+.user__form__div h1 {
+  font-size: 15px;
+  color: var(--primary-color);
+}
+
+.go__back__btn {
+  display: flex;
+  justify-content: end;
+}
+.go__back__btn button {
+  background-color: var(--primary-color);
+  border: none;
+  color: #fff;
+  padding: 5px 30px;
+  cursor: pointer;
+}
+
+.loader__area__here {
+  text-align: center;
+}
+
+.loader__area__here img {
+  width: 200px;
+}
 /* =================== Pending and Accepted Area ============================ */
 .waiting__accepted__btns {
   display: flex;

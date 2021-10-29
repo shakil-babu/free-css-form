@@ -54,7 +54,7 @@ const UserProfile = () => {
           <img src={avatar_url} alt="user-img" />
           <div className={styles.user_info}>
             <h3>
-              {login}({name})
+              {name}({login})
             </h3>
             <h5>{bio}</h5>
             <p>
@@ -64,9 +64,11 @@ const UserProfile = () => {
               <FaGithub className={styles.icon} />
               {login}
             </a>
-            <a href={blog || "#"} target="_blank">
-              <FaLink className={styles.icon} /> {blog || ""}
-            </a>
+            {blog && (
+              <a href={blog || "#"} target="_blank">
+                <FaLink className={styles.icon} /> {blog}
+              </a>
+            )}
             <div className={styles.btn_flex}>
               <Link to="/create">
                 <button>

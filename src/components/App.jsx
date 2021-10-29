@@ -15,6 +15,8 @@ import SecureAdmin from "./SecureAdmin.jsx";
 import ConfirmForms from "./ConfirmForms.jsx";
 import { db } from "../Firebase/config.js";
 import ViewFormDetails from "./ViewFormDetails.jsx";
+import Profile from "./Profile.jsx";
+import loader from "../images/loader.gif";
 // user context - for logged in user
 export const UserContext = createContext();
 
@@ -77,50 +79,74 @@ const App = () => {
     getData();
     getAcceptedData();
   }, []);
+
+  // loader state
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
+
   return (
     <div>
-      <AcceptedFormsContext.Provider
-        value={[acceptedAllForms, setAcceptedAllForms]}
-      >
-        <RandomWordContext.Provider value={[rw, setRw]}>
-          <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
-            <WaitingFormsContext.Provider
-              value={[waitingAllForms, setWaitingAllForms]}
-            >
-              <BrowserRouter>
-                <MainNavbar />
-                <Switch>
-                  <Route exact path="/" component={Home} />
-                  <PrivateRoute exact path="/create">
-                    <Create />
-                  </PrivateRoute>
-                  <Route exact path="/auth/sign-in" component={Signin} />
-                  <PrivateRoute exact path="/profile/:id">
-                    <UserProfile />
-                  </PrivateRoute>
-                  <Route exact path="/view/:userid/:formid">
-                    <ViewFormDetails />
-                  </Route>
-                  <PrivateRoute exact path="/details/:userid/update/:formid">
-                    <UpdateWaitingForm />
-                  </PrivateRoute>
-                  <PrivateRoute exact path="/details/:userid/updates/:formid">
-                    <UpdateAcceptedForms />
-                  </PrivateRoute>
-                  <PrivateRoute exact path={`/secure/${rw}/admin`}>
-                    <SecureAdmin />
-                  </PrivateRoute>
-                  <PrivateRoute exact path={`/secure/admin/confirm/:id`}>
-                    <ConfirmForms />
-                  </PrivateRoute>
-                  <Route path="*" component={NotFound} />
-                </Switch>
-                <Footer />
-              </BrowserRouter>
-            </WaitingFormsContext.Provider>
-          </UserContext.Provider>
-        </RandomWordContext.Provider>
-      </AcceptedFormsContext.Provider>
+      {loading ? (
+        <div className="loader__fullscreen__app">
+          <img src={loader} alt="loader-img" />
+        </div>
+      ) : (
+        <>
+          <AcceptedFormsContext.Provider
+            value={[acceptedAllForms, setAcceptedAllForms]}
+          >
+            <RandomWordContext.Provider value={[rw, setRw]}>
+              <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
+                <WaitingFormsContext.Provider
+                  value={[waitingAllForms, setWaitingAllForms]}
+                >
+                  <BrowserRouter>
+                    <MainNavbar />
+                    <Switch>
+                      <Route exact path="/" component={Home} />
+                      <PrivateRoute exact path="/create">
+                        <Create />
+                      </PrivateRoute>
+                      <Route exact path="/user/:user" component={Profile} />
+                      <Route exact path="/auth/sign-in" component={Signin} />
+                      <PrivateRoute exact path="/profile/:id">
+                        <UserProfile />
+                      </PrivateRoute>
+                      <Route exact path="/view/:userid/:formid">
+                        <ViewFormDetails />
+                      </Route>
+                      <PrivateRoute
+                        exact
+                        path="/details/:userid/update/:formid"
+                      >
+                        <UpdateWaitingForm />
+                      </PrivateRoute>
+                      <PrivateRoute
+                        exact
+                        path="/details/:userid/updates/:formid"
+                      >
+                        <UpdateAcceptedForms />
+                      </PrivateRoute>
+                      <PrivateRoute exact path={`/secure/${rw}/admin`}>
+                        <SecureAdmin />
+                      </PrivateRoute>
+                      <PrivateRoute exact path={`/secure/admin/confirm/:id`}>
+                        <ConfirmForms />
+                      </PrivateRoute>
+                      <Route path="*" component={NotFound} />
+                    </Switch>
+                    <Footer />
+                  </BrowserRouter>
+                </WaitingFormsContext.Provider>
+              </UserContext.Provider>
+            </RandomWordContext.Provider>
+          </AcceptedFormsContext.Provider>
+        </>
+      )}
     </div>
   );
 };

@@ -31,3 +31,15 @@ p {
 }
 
 /* ======================= default style ================== */
+.loader__fullscreen__app {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.534);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader__fullscreen__app img {
+  width: 200px;
+}
