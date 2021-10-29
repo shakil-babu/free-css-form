@@ -17,3 +17,23 @@
 .code__mirror__wrapper {
   overflow: hidden;
 }
+
+.copy__btn {
+  background-color: indigo;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.copy__btn h4 {
+  font-size: 16px;
+  color: #fff;
+}
+
+.copy__btn button {
+  font-size: 12px;
+  border: none;
+  text-transform: capitalize;
+  border-radius: 8px;
+  padding: 5px 20px;
+}

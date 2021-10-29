@@ -5,7 +5,8 @@ import { AcceptedFormsContext } from "./App";
 import { Link } from "react-router-dom";
 const FormsShowCase = () => {
   // accepted forms context
-  const [acceptedAllForms, setAcceptedAllForms] = useContext(AcceptedFormsContext);
+  const [acceptedAllForms, setAcceptedAllForms] =
+    useContext(AcceptedFormsContext);
 
   return (
     <>
@@ -34,7 +35,7 @@ const FormsShowCase = () => {
                       </div>
                     </div>
 
-                    <Link to={`/`}>
+                    <Link to={`/view/${item.loggedInUser.login}/${item.id}`}>
                       <button className={styles.view__btn}>View</button>
                     </Link>
                   </div>

@@ -65,12 +65,14 @@ const ConfirmForms = () => {
             displayName="HTML"
             value={html}
             onChange={setHtml}
+            bool={false}
           />
           <Editor
             language="css"
             displayName="CSS"
             value={css}
             onChange={setCss}
+            bool={false}
           />
         </div>
 

@@ -12,7 +12,8 @@ import { Link } from "react-router-dom";
 const UpdateWaitingForm = () => {
   const { formid } = useParams();
   // waitingFormsContext
-  const [acceptedAllForms, setAcceptedAllForms]= useContext(AcceptedFormsContext);
+  const [acceptedAllForms, setAcceptedAllForms] =
+    useContext(AcceptedFormsContext);
   // user info
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const [submit, setSubmit] = useState(false);
@@ -51,12 +52,14 @@ const UpdateWaitingForm = () => {
             displayName="HTML"
             value={html}
             onChange={setHtml}
+            bool={false}
           />
           <Editor
             language="css"
             displayName="CSS"
             value={css}
             onChange={setCss}
+            bool={false}
           />
         </div>
 

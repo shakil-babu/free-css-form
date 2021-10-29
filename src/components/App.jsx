@@ -9,12 +9,12 @@ import Signin from "./Signin.jsx";
 import PrivateRoute from "./PrivateRoute.jsx";
 import UserProfile from "./UserProfile.jsx";
 import UpdateWaitingForm from "./UpdateWaitingForm.jsx";
-import UpdateAcceptedForms from './UpdateAcceptedForms';
+import UpdateAcceptedForms from "./UpdateAcceptedForms";
 import NotFound from "../components/NotFound.jsx";
 import SecureAdmin from "./SecureAdmin.jsx";
 import ConfirmForms from "./ConfirmForms.jsx";
 import { db } from "../Firebase/config.js";
-
+import ViewFormDetails from "./ViewFormDetails.jsx";
 // user context - for logged in user
 export const UserContext = createContext();
 
@@ -79,43 +79,47 @@ const App = () => {
   }, []);
   return (
     <div>
-      <AcceptedFormsContext.Provider  value={[acceptedAllForms, setAcceptedAllForms]}>
-      <RandomWordContext.Provider value={[rw, setRw]}>
-        <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
-          <WaitingFormsContext.Provider
-            value={[waitingAllForms, setWaitingAllForms]}
-          >
-            <BrowserRouter>
-              <MainNavbar />
-              <Switch>
-                <Route exact path="/" component={Home} />
-                <PrivateRoute exact path="/create">
-                  <Create />
-                </PrivateRoute>
-                <Route exact path="/auth/sign-in" component={Signin} />
-                <PrivateRoute exact path="/profile/:id">
-                  <UserProfile />
-                </PrivateRoute>
-                <PrivateRoute exact path="/details/:userid/update/:formid">
-                  <UpdateWaitingForm />
-                </PrivateRoute>
-                <PrivateRoute exact path="/details/:userid/updates/:formid">
-                    <UpdateAcceptedForms/>
+      <AcceptedFormsContext.Provider
+        value={[acceptedAllForms, setAcceptedAllForms]}
+      >
+        <RandomWordContext.Provider value={[rw, setRw]}>
+          <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
+            <WaitingFormsContext.Provider
+              value={[waitingAllForms, setWaitingAllForms]}
+            >
+              <BrowserRouter>
+                <MainNavbar />
+                <Switch>
+                  <Route exact path="/" component={Home} />
+                  <PrivateRoute exact path="/create">
+                    <Create />
                   </PrivateRoute>
-                  
-                <PrivateRoute exact path={`/secure/${rw}/admin`}>
-                  <SecureAdmin />
-                </PrivateRoute>
-                <PrivateRoute exact path={`/secure/admin/confirm/:id`}>
-                  <ConfirmForms />
-                </PrivateRoute>
-                <Route path="*" component={NotFound} />
-              </Switch>
-              <Footer />
-            </BrowserRouter>
-          </WaitingFormsContext.Provider>
-        </UserContext.Provider>
-      </RandomWordContext.Provider>
+                  <Route exact path="/auth/sign-in" component={Signin} />
+                  <PrivateRoute exact path="/profile/:id">
+                    <UserProfile />
+                  </PrivateRoute>
+                  <Route exact path="/view/:userid/:formid">
+                    <ViewFormDetails />
+                  </Route>
+                  <PrivateRoute exact path="/details/:userid/update/:formid">
+                    <UpdateWaitingForm />
+                  </PrivateRoute>
+                  <PrivateRoute exact path="/details/:userid/updates/:formid">
+                    <UpdateAcceptedForms />
+                  </PrivateRoute>
+                  <PrivateRoute exact path={`/secure/${rw}/admin`}>
+                    <SecureAdmin />
+                  </PrivateRoute>
+                  <PrivateRoute exact path={`/secure/admin/confirm/:id`}>
+                    <ConfirmForms />
+                  </PrivateRoute>
+                  <Route path="*" component={NotFound} />
+                </Switch>
+                <Footer />
+              </BrowserRouter>
+            </WaitingFormsContext.Provider>
+          </UserContext.Provider>
+        </RandomWordContext.Provider>
       </AcceptedFormsContext.Provider>
     </div>
   );

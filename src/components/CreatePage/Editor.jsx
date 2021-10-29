@@ -13,7 +13,7 @@ import { Controlled as ControlledEditor } from "react-codemirror2";
 // component started here
 const Editor = (props) => {
   // state from props
-  const { displayName, language, value, onChange } = props;
+  const { displayName, language, value, onChange, bool } = props;
   const handleChange = (editor, data, value) => {
     onChange(value);
   };
@@ -22,7 +22,14 @@ const Editor = (props) => {
     <>
       {/* ==================== Code area ====================== */}
       <div className={styles.code__area}>
-        <h5>{displayName}</h5>
+        {bool ? (
+          <div className={styles.copy__btn}>
+            <h4>{displayName}</h4>
+            <button>Copy all</button>
+          </div>
+        ) : (
+          <h5>{displayName}</h5>
+        )}
         <ControlledEditor
           onBeforeChange={handleChange}
           value={value}
