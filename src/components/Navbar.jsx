@@ -89,14 +89,6 @@ const MainNavbar = (props) => {
                     </a>
                   </Nlink>
                 </NavItem>
-                <NavItem>
-                  <Nlink activeClassName={styles.activeNav} to="/contributors">
-                    <a className={styles.link}>
-                      <IoMdContacts />
-                      <NavLink>Contributors</NavLink>
-                    </a>
-                  </Nlink>
-                </NavItem>
                 {!email && (
                   <NavItem>
                     <Nlink

@@ -111,6 +111,7 @@ const App = () => {
                       <PrivateRoute exact path="/create">
                         <Create />
                       </PrivateRoute>
+
                       <Route exact path="/user/:user" component={Profile} />
                       <Route exact path="/auth/sign-in" component={Signin} />
                       <PrivateRoute exact path="/profile/:id">
