@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 // for code editor
 import "codemirror/lib/codemirror.css";
 import "codemirror/theme/material.css";
 import "codemirror/mode/xml/xml";
 import "codemirror/mode/css/css";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 // default styles
 import styles from "../../styles/Editor.module.css";
@@ -18,6 +19,16 @@ const Editor = (props) => {
     onChange(value);
   };
 
+  const [text, setText] = useState(value);
+  const [isCopied, setIsCopied] = useState(false);
+
+  const onCopyText = () => {
+    setIsCopied(true);
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 1000);
+  };
+
   return (
     <>
       {/* ==================== Code area ====================== */}
@@ -25,7 +36,15 @@ const Editor = (props) => {
         {bool ? (
           <div className={styles.copy__btn}>
             <h4>{displayName}</h4>
-            <button>Copy all</button>
+            <CopyToClipboard text={text} onCopy={onCopyText}>
+              {isCopied ? (
+                <button style={{ background: "#f50057", color: "#fff" }}>
+                  Copied
+                </button>
+              ) : (
+                <button>Copy all</button>
+              )}
+            </CopyToClipboard>
           </div>
         ) : (
           <h5>{displayName}</h5>
