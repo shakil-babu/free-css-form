@@ -1,0 +1,47 @@
+.section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #001d30;
+    animation: changeBg 5s linear infinite;
+  }
+  .loader {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background-image: linear-gradient(to top, transparent 40%, #03a9f4);
+    background-color: inherit;
+    border-radius: 50%;
+    animation: rotate 1s linear infinite;
+  }
+  .loader::before {
+    content: "";
+    position: absolute;
+    inset: 20px 20px 0 0;
+    background-color: inherit;
+    border-radius: inherit;
+  }
+  .loader::after {
+    content: "";
+    position: absolute;
+    color: #03a9f4;
+    top: 50px;
+    right: -8px;
+    width: 40px;
+    height: 40px;
+    background-color: currentcolor;
+    border-radius: inherit;
+    box-shadow: 0 0 4px, 0 0 16px, 0 0 32px, 0 0 48px, 0 0 96px;
+  }
+  @keyframes rotate {
+    100% {
+      transform: rotate(1turn);
+    }
+  }
+  @keyframes changeBg {
+    100% {
+      filter: hue-rotate(1turn);
+    }
+  }
+  

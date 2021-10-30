@@ -16,7 +16,7 @@ import ConfirmForms from "./ConfirmForms.jsx";
 import { db } from "../Firebase/config.js";
 import ViewFormDetails from "./ViewFormDetails.jsx";
 import Profile from "./Profile.jsx";
-import loader from "../images/loader.gif";
+import Loading from "./Loading.jsx";
 // user context - for logged in user
 export const UserContext = createContext();
 
@@ -92,7 +92,7 @@ const App = () => {
     <div>
       {loading ? (
         <div className="loader__fullscreen__app">
-          <img src={loader} alt="loader-img" />
+          <Loading />
         </div>
       ) : (
         <>

@@ -49,6 +49,7 @@ const githubAuthentication = () => {
     });
 };
 
+// github authentication
 export default githubAuthentication;
 
 // firestore database
