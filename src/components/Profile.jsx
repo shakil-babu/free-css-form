@@ -10,7 +10,7 @@ const Profile = () => {
   const [acceptedAllForms, setAcceptedAllForms] =
     useContext(AcceptedFormsContext);
 
-  // filtered accepted forms data for logged in use
+  // filtered accepted forms data for logged in user
   let filteredAcceptedData = acceptedAllForms.filter(
     (item, index) => item.loggedInUser.login === user
   );

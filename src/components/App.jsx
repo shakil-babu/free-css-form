@@ -17,6 +17,7 @@ import { db } from "../Firebase/config.js";
 import ViewFormDetails from "./ViewFormDetails.jsx";
 import Profile from "./Profile.jsx";
 import Loading from "./Loading.jsx";
+import Contributors from "./Contributors.jsx";
 // user context - for logged in user
 export const UserContext = createContext();
 
@@ -138,6 +139,7 @@ const App = () => {
                       <PrivateRoute exact path={`/secure/admin/confirm/:id`}>
                         <ConfirmForms />
                       </PrivateRoute>
+                      <Route path="/contributors" component={Contributors} />
                       <Route path="*" component={NotFound} />
                     </Switch>
                     <Footer />

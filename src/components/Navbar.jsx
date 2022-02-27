@@ -13,13 +13,13 @@ import {
   DropdownItem,
 } from "reactstrap";
 import { BsGithub, BsFacebook, BsPlusLg } from "react-icons/bs";
+import { FaUsers } from "react-icons/fa";
 import {
   RiBarChartHorizontalFill,
   RiUser3Fill,
   RiAdminFill,
 } from "react-icons/ri";
 import { AiOutlineLogout } from "react-icons/ai";
-import { IoMdContacts } from "react-icons/io";
 import styles from "../styles/Navbar.module.css";
 import { Link, NavLink as Nlink } from "react-router-dom";
 import { RandomWordContext, UserContext } from "./App";
@@ -64,7 +64,6 @@ const MainNavbar = (props) => {
   // sign out
   const signOut = () => {
     setLoggedInUser({});
-    // localStorage.removeItem("user");
   };
   return (
     <div className={styles.navbar__wrapper}>
@@ -86,6 +85,18 @@ const MainNavbar = (props) => {
                     <a className={styles.link}>
                       <BsPlusLg />
                       <NavLink>Create</NavLink>
+                    </a>
+                  </Nlink>
+                </NavItem>
+                <NavItem>
+                  <Nlink
+                    exact
+                    activeClassName={styles.activeNav}
+                    to="/contributors"
+                  >
+                    <a className={styles.link}>
+                      <FaUsers />
+                      <NavLink>Contributors</NavLink>
                     </a>
                   </Nlink>
                 </NavItem>

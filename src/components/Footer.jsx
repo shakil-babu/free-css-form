@@ -19,7 +19,7 @@ const Footer = () => {
           <div className="container">
             <div className="row">
               <div className={`col-sm-6 col-md-3 ${styles.item}`}>
-                <h3>Benefits</h3>
+                <h3>Benefits 🤩</h3>
                 <ul>
                   <li>
                     <a href="#">Free form</a>
@@ -33,7 +33,7 @@ const Footer = () => {
                 </ul>
               </div>
               <div className={`col-sm-6 col-md-3 ${styles.item}`}>
-                <h3>Features</h3>
+                <h3>Features 😍 </h3>
                 <ul>
                   <li>
                     <a href="#">Create</a>

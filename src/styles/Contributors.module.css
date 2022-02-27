@@ -1,7 +1,35 @@
+/* ================== Contributors.css ================== */
 .contributors__area {
-  padding: 35px 0;
+  width: 85%;
+  margin: auto;
+  background-color: #fff;
+  box-shadow: var(--primary-shadow);
+  padding: 30px;
+  margin-top: 50px;
 }
 
+.contributors__introduction {
+  background-color: var(--primary-color);
+  padding: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.contributors__introduction h1 {
+  font-size: 20px;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: bolder;
+}
+.contributors__grid__area {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
 .contributors__heading {
   background-color: var(--primary-color);
   padding: 15px;
@@ -13,14 +41,7 @@
   text-transform: uppercase;
 }
 
-.grid__layout {
-  margin-top: 30px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
-}
-
-.grid__item {
+.contributors__user__profile {
   display: flex;
   align-items: center;
   box-shadow: var(--primary-shadow);
@@ -28,31 +49,46 @@
   background-color: #fff;
 }
 
-.grid__item img {
-  width: 80px;
-  height: 80px;
+.contributors__user__profile img {
+  width: 70px;
+  height: 70px;
   border-radius: 100%;
   border: 4px dotted var(--primary-color);
 }
 
-.item__content {
-  margin-left: 8px;
+.contributors__user__profile__bio {
+  margin-left: 14px;
 }
 
-.item__content h5 {
-  font-size: 16px;
+.contributors__user__profile__bio h5 {
+  font-size: 17px;
+  color: var(--primary-color);
+  text-transform: capitalize;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+}
+
+.contributors__user__profile__bio p {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
   color: gray;
 }
 
 /* ========================== responsive ========================== */
 @media screen and (max-width: 992px) {
-  .grid__layout {
+  .contributors__grid__area {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media screen and (max-width: 768px) {
-  .grid__layout {
+  .contributors__grid__area {
     grid-template-columns: repeat(1, 1fr);
+  }
+
+  .contributors__introduction h1 {
+    font-size: 16px;
   }
 }
