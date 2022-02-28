@@ -9,4 +9,4 @@ You can use this project for enhance your excisting project. There are lots of f
 
 [CLICK HERE FOR VISIT](https://freecssform.vercel.app)
 
-Find the best css form for your project. There are different types of form just choose one which is suited. Also you can create your own form then you will get featured on this page.
+Find the best css form for your project. There are different types of form just choose one which is suited. Also you can create your own form then you will get featured on (contributors+profile+home) pages.
